@@ -1,7 +1,18 @@
-Please run the following command to run this project
-npm install
-php artisan migrate
-php artisan serve  ....in one terminal.....
-npm run dev        ....In the second terminal....
-And here you go 
-Enjoy Testing (--)
+<h2>Please run the following command to run this project</h2>
+<ul>
+    <li>npm install</li>
+    <li>php artisan migrate</li>
+    <li>php artisan serve    <small> ....in one terminal.....</small></li>
+    <li>npm run dev     <small>  ....In the second terminal....</small></li>
+</ul>
+
+<p>And here you go</p> 
+
+<p>Enjoy Testing (--)</p>
+
+
+ 
+
+      
+
+
