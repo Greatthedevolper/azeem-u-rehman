@@ -7,18 +7,20 @@ import { usePage } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
     feedbacks: Object,
+    flash:Object
 });
-const { message, error } = usePage().props
+const { message, error, page } = usePage().props
 const showMessage = ref(message)
 const showError = ref(error)
 const feedbacks = ref(props.feedbacks);
 const comment = ref('');
 const formId = ref('');
+const alertMessage = ref(message);
 onMounted(() => {
     console.log(feedbacks.value.links, "hello");
-    console.log(props.message);
-    if (props.message) {
-        showMessage.value=props.message
+    console.log(props.flash.message);
+    if (props.flash.message) {
+        showMessage.value=props.flash.message
     }
 });
 
@@ -36,6 +38,7 @@ const toggleFormVisibility = (id) => {
     formId.value = id;
     isFormVisible.value = !isFormVisible.value;
 };
+
 const submitComment = (id) => {
     event.preventDefault();
     console.log(id);
@@ -47,9 +50,9 @@ const submitComment = (id) => {
 
 <template>
     <Head title="Dashboard" />
-    <div v-if="showMessage" class="absolute p-2 rounded bg-green-400 text-white">{{ showMessage }}</div>
-    <div v-if="showError" class="absolute p-2 rounded bg-red-400 text-white">{{ showError }}</div>
+    <vueAlert  :message="showMessage" :show="true"  :alertBg="'bg-green-400 text-white'"></vueAlert>
     <AuthenticatedLayout>
+
         <template #header>
             <h2 class="font-semibold text-xl text-white leading-tight">
                 Dashboard

@@ -40,14 +40,29 @@ class AuthenticatedSessionController extends Controller
     /**
      * Destroy an authenticated session.
      */
+    // public function destroy(Request $request): RedirectResponse
+    // {
+    //     Auth::guard('web')->logout();
+
+    //     $request->session()->invalidate();
+
+    //     $request->session()->regenerateToken();
+
+    //     return redirect('/')->with('message', 'You are Logged Out');
+    //     return Inertia::render('Welcome', [
+    //         'canLogin' => Route::has('login'),
+    //         'canRegister' => Route::has('register'),
+    //         'laravelVersion' => Application::VERSION,
+    //         'phpVersion' => PHP_VERSION,
+    //     ]);
+    // }
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('message', 'You have been logged out.');
     }
 }
